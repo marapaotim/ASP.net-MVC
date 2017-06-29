@@ -1,0 +1,36 @@
+﻿@model WebApplication4.Models.EmployeeModel
+@{
+    ViewBag.Title = "NewEmployee";
+}
+
+<h2>NewEmployee</h2>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+@using (Html.BeginForm("InsertEmployee", "Employee", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    <div class="form-group">
+        <label>Name</label> 
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Name" })
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" }) 
+    </div>
+    <div class="form-group">
+        <label>Gender</label><br />
+        <label>@Html.RadioButtonFor(model => model.Gender, "Male") Male</label>
+        <label>@Html.RadioButtonFor(model => model.Gender, "Female") Female</label><br />
+        @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        <label>Email Address</label>
+        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Email" })
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        <label>Age</label>
+        @Html.TextBoxFor(model => model.Age, new { @class = "form-control", @placeholder = "Age" })
+        @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+    </div>
+    <input type="submit" value="Submit" class="btn btn-block btn-primary" />
+}
+
